@@ -9,6 +9,14 @@ float L=60;  // current L value in Lch space
 boolean showLch=false, showTerrain=true;  // what to show
 float x, y;  // rectangle sizes
 int p = 256;   // resolution of terrain map
+int pickedColor;
+
+import javax.swing.*;
+import java.awt.*;
+
+static class colorValue {
+  static Color col = Color.getColor("black");
+}
  
 
 void setup() 
@@ -20,11 +28,25 @@ void setup()
   x = (float)width/(n+2); // dimensions of color rectangles for drawing
   y = (float)height/(n+2);
   computeJareksMap();           // compute proposed map
+  
+    //SwingUtilities.invokeLater(new Runnable() {
+    //    public void run() {
+          
+    //        //This method is inside the color picker class, which take in two String
+    //        // variables, indicateing the name of the static class and the name of
+    //        // static varible to modify.
+    //        // The '$' indicates inner class. In this case, 'colorPicker' is the
+    //        // name of the sketch (outer class) and 'colorValue' is the name of
+    //        // inner class.
+    //        ColorChooser.createAndShowGUI("colorPicker$colorValue", "col");
+    //    }
+    //});
+    
   }
 
 // ************************************************************************ DRAW
 void draw() 
-  {  
+  {    
   background(L*2.55);
   
   if(snapPic) beginRecord(PDF,PicturesOutputPath+"/P"+nf(pictureCounter++,3)+".pdf");  // *********** START PDF CAPTURE
