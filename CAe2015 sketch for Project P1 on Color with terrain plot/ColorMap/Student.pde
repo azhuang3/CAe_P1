@@ -18,6 +18,7 @@ color myMap(int i, int n)
   //float h = 360.*((int)(i/4))*4/n; 
   //double[] a = LCHtoLAB(l, c, h);
   //return LABtoColor(a[0], a[1], a[2]);
+  
   int numColors = 2;
   
   float j = i%(float(n)/numColors) / (float(n)/numColors);
@@ -29,9 +30,9 @@ color myMap(int i, int n)
   } else {
     return LABramp(redC(yellow), greenC(yellow), blueC(yellow), redC(magenta), greenC(magenta), blueC(magenta), j);  
   }
-  }
+  //}
   
   
 //color myMap(int i, int n) {
   
-//}
+}
