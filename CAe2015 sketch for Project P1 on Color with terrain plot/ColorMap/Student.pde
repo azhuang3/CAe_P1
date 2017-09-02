@@ -9,6 +9,12 @@ color JareksMap(int i, int n)
   }
 
 
+
+
+//int saturated=99, pastel=49;
+//int light=500, dark=59;
+int counter = 1;
+
 // ********** STUDENT's SOLUTION (Modify myMap)
 color myMap(int i, int n)
   {
@@ -20,26 +26,47 @@ color myMap(int i, int n)
   //return LABtoColor(a[0], a[1], a[2]);
     
   
-  int numColors = 4;
+  int numColors = 3;
   
   float j = i%(float(n)/numColors) / (float(n)/numColors);
   color[] ramp = new color[5];
-  ramp[0] = campfireBlue;
-  ramp[1] = campfireWhite;
-  ramp[2] = campfireOrange;
-  ramp[3] = campfireRed;
-  ramp[4] = campfireBrown;
+  ramp[0] = red;
+  ramp[1] = green;
+  ramp[2] = cyan;
+  ramp[3] = magenta;
   
 
-  
+  color ci;
   if (i < float(n)/numColors) {
-    return LABramp(redC(ramp[0]), greenC(ramp[0]), blueC(ramp[0]), redC(ramp[1]), greenC(ramp[1]), blueC(ramp[1]), j);
+    ci = LABramp(redC(ramp[0]), greenC(ramp[0]), blueC(ramp[0]), redC(ramp[1]), greenC(ramp[1]), blueC(ramp[1]), j);
   } else if (i < 2*float(n)/numColors){
-    return LABramp(redC(ramp[1]), greenC(ramp[1]), blueC(ramp[1]), redC(ramp[2]), greenC(ramp[2]), blueC(ramp[2]), j);  
-  } else if (i < 3*float(n)/numColors){
-    return LABramp(redC(ramp[2]), greenC(ramp[2]), blueC(ramp[2]), redC(ramp[3]), greenC(ramp[3]), blueC(ramp[3]), j);  
+    ci = LABramp(redC(ramp[1]), greenC(ramp[1]), blueC(ramp[1]), redC(ramp[2]), greenC(ramp[2]), blueC(ramp[2]), j);  
   } else {
-    return LABramp(redC(ramp[3]), greenC(ramp[3]), blueC(ramp[3]), redC(ramp[4]), greenC(ramp[4]), blueC(ramp[4]), j);
+    ci = LABramp(redC(ramp[2]), greenC(ramp[2]), blueC(ramp[2]), redC(ramp[3]), greenC(ramp[3]), blueC(ramp[3]), j);  
   }
+  
+  double[] cLAB = RGBtoLAB(redC(ci), greenC(ci), blueC(ci));
+  if(counter == 0) {
+    counter = 1;
+    cLAB[0] /= 1.35;
+  //} else if (counter == 1) {
+  //  counter = 2;
+  //  cLAB[0] /= 4;
+  //} else if (counter == 2) {
+  //  counter = 3;
+  //  cLAB[0] /= 2;
+  } else {
+    cLAB[0] /= 1.05;
+    counter = 0;
+  }
+  
+  ci = LABtoColor(cLAB[0], cLAB[1], cLAB[2]);
+  return ci;
+  //newColor = color(redC(newColor), greenC(newColor), blueC(newColor), light);
+  
+  
+  //else {
+  //  return LABramp(redC(ramp[3]), greenC(ramp[3]), blueC(ramp[3]), redC(ramp[4]), greenC(ramp[4]), blueC(ramp[4]), j);
+  //}
   
 }
