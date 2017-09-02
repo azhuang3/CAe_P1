@@ -18,21 +18,28 @@ color myMap(int i, int n)
   //float h = 360.*((int)(i/4))*4/n; 
   //double[] a = LCHtoLAB(l, c, h);
   //return LABtoColor(a[0], a[1], a[2]);
+    
   
-  int numColors = 2;
+  int numColors = 4;
   
   float j = i%(float(n)/numColors) / (float(n)/numColors);
+  color[] ramp = new color[5];
+  ramp[0] = campfireBlue;
+  ramp[1] = campfireWhite;
+  ramp[2] = campfireOrange;
+  ramp[3] = campfireRed;
+  ramp[4] = campfireBrown;
+  
+
   
   if (i < float(n)/numColors) {
-    return LABramp(redC(cyan), greenC(cyan), blueC(cyan), redC(yellow), greenC(yellow), blueC(yellow), j);
+    return LABramp(redC(ramp[0]), greenC(ramp[0]), blueC(ramp[0]), redC(ramp[1]), greenC(ramp[1]), blueC(ramp[1]), j);
   } else if (i < 2*float(n)/numColors){
-    return LABramp(redC(yellow), greenC(yellow), blueC(yellow), redC(magenta), greenC(magenta), blueC(magenta), j);  
+    return LABramp(redC(ramp[1]), greenC(ramp[1]), blueC(ramp[1]), redC(ramp[2]), greenC(ramp[2]), blueC(ramp[2]), j);  
+  } else if (i < 3*float(n)/numColors){
+    return LABramp(redC(ramp[2]), greenC(ramp[2]), blueC(ramp[2]), redC(ramp[3]), greenC(ramp[3]), blueC(ramp[3]), j);  
   } else {
-    return LABramp(redC(yellow), greenC(yellow), blueC(yellow), redC(magenta), greenC(magenta), blueC(magenta), j);  
+    return LABramp(redC(ramp[3]), greenC(ramp[3]), blueC(ramp[3]), redC(ramp[4]), greenC(ramp[4]), blueC(ramp[4]), j);
   }
-  //}
-  
-  
-//color myMap(int i, int n) {
   
 }

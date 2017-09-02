@@ -162,16 +162,16 @@ int counter = 1;
 color LABramp(int R0, int G0, int B0, int R1, int G1, int B1, float s) {
   double[] LAB0 = RGBtoLAB(R0, G0, B0), LAB1 = RGBtoLAB(R1, G1, B1);
   color newColor = LABtoColor((1.-s)*LAB0[0]+s*LAB1[0],(1.-s)*LAB0[1]+s*LAB1[1],(1.-s)*LAB0[2]+s*LAB1[2]); 
-  newColor = color(redC(newColor), greenC(newColor), saturated, light);
+  //newColor = color(redC(newColor), greenC(newColor), saturated, light);
   
-  if(counter%2==0) {
-    saturated = 150;
-    light++;
-  } else {
-    saturated = 49;
-    light++;
-  }
-  counter++;
+  //if(counter%2==0) {
+  //  saturated += 150;
+  //  light+=100;
+  //} else {
+  //  saturated -= 150;
+  //  light-=100;
+  //}
+  //counter++;
   
   return newColor; 
   } 

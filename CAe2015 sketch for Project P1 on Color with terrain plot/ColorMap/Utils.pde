@@ -13,6 +13,14 @@ color  // set more colors using Menu >  Tools > Color Selector
   metal=#B5CCDE, 
   dgreen=#157901;
   
+// custom color palette
+color
+  campfireBlue=#588C7E,
+  campfireWhite=#F2E394,
+  campfireOrange=#F2AE72,
+  campfireRed=#D96459,
+  campfireBrown=#8C4646;
+  
   
 int redC(color c) {return int (c >> 16 & 0xFF); } 
 int greenC(color c) {return int (c >> 8 & 0xFF); }  
