@@ -22,26 +22,11 @@ static class colorValue {
 void setup() 
   {
   size(600, 600, P3D);  // opens canvas and selects rendering library
-  //fullScreen(P3D); //Full screen
   myFace = loadImage("data/pic.jpg");  // load image from file pic.jpg in folder data (replace that file with your pic of your own face!!!)
   rectMode(CENTER);
   x = (float)width/(n+2); // dimensions of color rectangles for drawing
   y = (float)height/(n+2);
-  computeJareksMap();           // compute proposed map
-  
-    //SwingUtilities.invokeLater(new Runnable() {
-    //    public void run() {
-          
-    //        //This method is inside the color picker class, which take in two String
-    //        // variables, indicateing the name of the static class and the name of
-    //        // static varible to modify.
-    //        // The '$' indicates inner class. In this case, 'colorPicker' is the
-    //        // name of the sketch (outer class) and 'colorValue' is the name of
-    //        // inner class.
-    //        ColorChooser.createAndShowGUI("colorPicker$colorValue", "col");
-    //    }
-    //});
-    
+  computeJareksMap();           // compute proposed map  
   }
 
 // ************************************************************************ DRAW
